@@ -27,6 +27,9 @@ else:
 screen = pygame.display.set_mode((x, y))
 
 pygame.display.set_caption("CRIATIX")
+
+
+
  
 # Horloge pour contrôler les FPS
 clock = pygame.time.Clock()
