@@ -53,7 +53,7 @@ while True:
     # Limite les FPS
 
     clock.tick(FPS)
- 
+
 # Nettoyage
 
 pygame.quit()
