@@ -10,11 +10,13 @@ pygame.init()
  
 # Création de la fenêtre
 
-WIDTH, HEIGHT = 800, 600
+taille_case = 32
+x = 5
+y = 5
 
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((x, y))
 
-pygame.display.set_caption("Mon jeu Pokémon-like")
+pygame.display.set_caption("CRIATIX")
  
 # Horloge pour contrôler les FPS
 
