@@ -1,3 +1,7 @@
+import pygame
+
+
+
 class Foret:
     pass
 class Arbre(Foret):
@@ -33,5 +37,7 @@ class Hopital(Batiments):
     pass
 class Magasins(Batiments):
     pass
+
+
 
 
