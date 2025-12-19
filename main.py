@@ -9,36 +9,37 @@ import sys
 pygame.init()
  
 # Création de la fenêtre
-
 taille_case = 32
-x = 5
-y = 5
+x = 00
+y = 800
+
+info = pygame.display.Info()
+SCREEN_WIDTH = info.current_w
+SCREEN_HEIGHT = info.current_h
+
+fullscreen = False  # Mettre False pour fenêtre normale
+
+if fullscreen:
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.FULLSCREEN)
+else:
+    screen = pygame.display.set_mode((800, 600))
 
 screen = pygame.display.set_mode((x, y))
 
 pygame.display.set_caption("CRIATIX")
  
 # Horloge pour contrôler les FPS
-
 clock = pygame.time.Clock()
-
 FPS = 60
  
 # Boucle principale
 
-running = True
-
-while running:
+while True:
 
     # Gestion des événements
-
     for event in pygame.event.get():
-
         if event.type == pygame.QUIT:
-
-            running = False
- 
-    # --- LOGIQUE DU JEU ICI ---
+            exit()
  
     # --- AFFICHAGE ---
 
