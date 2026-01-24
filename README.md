@@ -1,12 +1,12 @@
 Must have:
 MAXIME
 -Créer un system de personnages (criatix et gens)
+-Système de déplacement
 -system de combat (dégâts, capture, mort)
 -perso par defaut
 -system de pt de vie
 
 ADRIEN
--Système de déplacement
 -map 2D
 -system démarrage combat
 -system de sauvegarde
