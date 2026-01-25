@@ -23,3 +23,9 @@ ADRIEN
 -boutiques, on peut rentrer dans les maisons/boutiques, hôpitaux etc…
 -combat random dans certains lieux (forets, champs, etc...)
 -inventaire (criaball, soins, objet mystérieux, ttes sortes d’objets)
+
+
+
+ce qu'on à fait:
+ADRIEN
+map, systeme de déplacement
