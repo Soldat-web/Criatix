@@ -8,6 +8,7 @@ MAXIME
 
 ADRIEN
 -map 2D
+-collisons
 -system démarrage combat
 -system de sauvegarde
 
