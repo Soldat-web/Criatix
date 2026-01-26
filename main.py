@@ -23,7 +23,7 @@ else:
 
 
 #import image map
-map = pytmx.load_pygame("C:/Users/adrie/Desktop/projet Criatix/Criatix/criatixmap.tmx")
+map = pytmx.load_pygame("./criatixmap.tmx")
 
 
 
