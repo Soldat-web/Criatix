@@ -1,5 +1,9 @@
 
-import Adrien_class
+from Adrien_class import Game
+
+
+
+
 import pygame
 import sys
 import pytmx
@@ -7,27 +11,26 @@ from player import Player
 
 # Initialisation de pygame
 pygame.init()
-# Création de la fenêtre lal
-taille_case = 32
+if __name__ == "__main__":
+    jeu = Game()
+    jeu.run()
 
-info = pygame.display.Info()
-SCREEN_WIDTH = info.current_w
-SCREEN_HEIGHT = info.current_h
 
-fullscreen = False  # Mettre False pour fenêtre normale
-if fullscreen:
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.FULLSCREEN)
-else:
-    screen = pygame.display.set_mode((800, 600))
+
+
+
+
+
+
+
+
+
+
 
 
 
 #import image map
-map = pytmx.load_pygame("./criatixmap.tmx")
-
-
-
-pygame.display.set_caption("CRIATIX")
+tmx_map = pytmx.load_pygame("./criatixmap.tmx")
 
 
 def draw_map(screen, tmx_data):
@@ -72,7 +75,6 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-            running = False
 
 
     keys = pygame.key.get_pressed()
@@ -88,23 +90,9 @@ while running:
 
 
     # --- AFFICHAGE ---
-    screen.fill((0, 0, 0))  # fond noir
-    draw_map(screen,map)
-
-    pygame.display.update()
-
-    #affichage du perso
-    screen.blit(joueur.image, (joueur.rect))
-    #à titre d'info du personnage (la où il est et ca taille)
-    print(joueur.rect)
-
-
-   
-
-    
-
+    screen.fill((0, 0, 0))
+    draw_map(screen, map)
+    screen.blit(joueur.image, joueur.rect)  # joueur ici
     pygame.display.flip()
-    # Limite les FPS
-    clock.tick(FPS)
 
 
