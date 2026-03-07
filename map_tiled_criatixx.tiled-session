@@ -1,8 +1,8 @@
 {
     "activeFile": "assets/map/map0.tmx",
     "expandedProjectPaths": [
-        "assets",
-        "."
+        ".",
+        "assets"
     ],
     "fileStates": {
         "C:/Users/Administrateur/Desktop/mapTILED/tuile.tsx": {
@@ -13,8 +13,8 @@
             "scale": 0.25,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 816,
-                "y": 1042
+                "x": 796,
+                "y": 904
             }
         },
         "assets/map/tilset/tileset_epicadv_nodoor.tsx": {
@@ -29,14 +29,16 @@
             }
         },
         "assets/tileset/tileset_epicadv_nodoor.tsx": {
-            "scaleInDock": 1
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "assets/tilset/tileset_epicadv_nodoor.tsx": {
             "scaleInDock": 0.5,
             "scaleInEditor": 1
         }
     },
-    "last.externalTilesetPath": "C:/Users/Administrateur/Desktop/TERMCRIATIX/Criatix/assets/tileset",
+    "last.externalTilesetPath": "C:/Users/Administrateur/Desktop/TERMCRIATIX/Criatix/assets/map/tileset",
     "last.imagePath": "C:/Users/Administrateur/Desktop/TERMCRIATIX/Criatix/assets/tilset",
     "map.height": 100,
     "map.lastUsedFormat": "tmx",
@@ -44,10 +46,12 @@
     "map.tileWidth": 16,
     "map.width": 100,
     "openFiles": [
-        "assets/map/map0.tmx"
+        "assets/map/map0.tmx",
+        "assets/tileset/tileset_epicadv_nodoor.tsx"
     ],
     "project": "map_tiled_criatixx.tiled-project",
     "recentFiles": [
+        "assets/tileset/tileset_epicadv_nodoor.tsx",
         "assets/map/map0.tmx",
         "assets/tilset/tileset_epicadv_nodoor.tsx",
         "assets/map0.tmx",
