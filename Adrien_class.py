@@ -18,10 +18,10 @@ class Game:
 
 class Screen:
     def __init__(self):
-        self.display = pygame.display.set_mode((1200, 720))
-        pygame.display.set_caption("CRIATIX")
-        self.clock = pygame.time.Clock()
-        self.frame = 60
+        self.display = pygame.display.set_mode((1280, 720))#fenetre en 1280 par 720
+        pygame.display.set_caption("CRIATIX")#nom de la fenetre criatix
+        self.clock = pygame.time.Clock() #controle de la vitesse boucle jeu
+        self.frame = 60 #le jeu tourne en 60 fps
 
     def update(self):
         pygame.display.flip()
@@ -61,38 +61,6 @@ class Carte:
 
     def update(self):
         self.group.draw(self.screen.get_display())
-
-
-
-
-
-
-
-
-
-
-class Foret:
-    pass
-class Arbre(Foret):
-    pass
-class Chemin(Foret):
-    pass
-
-
-class Arene:
-    pass
-
-
-
-class Defis:
-    pass
-
-
-class Coffre:
-    pass
-class Criatix:
-    pass
-
 
 
 
