@@ -8,10 +8,12 @@ class Game:
     def __init__(self):
         self.running = True
         self.screen = Screen()
+        self.map = Carte(self.screen)
 
     def run(self):
         while self.running:
-            pass
+            self.map.group.draw(self.screen.get_display())
+            self.screen.update()
 
 
 class Screen:
@@ -40,16 +42,25 @@ class Carte:
         self.map_layer = None
         self.group = None
 
+        self.switch_map("map0")
+
     def switch_map(self, name: str):
         base_path = os.path.dirname(__file__)
-        path = os.path.join(base_path, "assets", "maps", f"{name}.tmx")
+        path = os.path.join(base_path, "assets", "map", f"{name}.tmx")
 
         self.tmx_data = pytmx.util_pygame.load_pygame(path)
+
         map_data = pyscroll.data.TiledMapData(self.tmx_data)
-        self.map_layer = pyscroll.orthographic.BufferedRenderer(map_data, self.screen.get_size())
+        self.map_layer = pyscroll.orthographic.BufferedRenderer(map_data, self.screen.size())
 
         self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=1)
 
+        map_data = pyscroll.data.TiledMapData(self.tmx_data)
+        self.map_layer = pyscroll.BufferedRenderer(map_data, self.screen.size())
+        self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=7)
+
+    def update(self):
+        self.group.draw(self.screen.get_display())
 
 
 
@@ -90,9 +101,9 @@ class Criatix:
 class Batiments:
     def __init__(self):
         self.porte = 0
-    
+
     def porte_ouverte(self):
-        
+
         if self.porte > 1:
             self.porte = 1
         elif self.porte < 0:
