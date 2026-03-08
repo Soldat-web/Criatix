@@ -25,7 +25,6 @@ class Screen:
 
     def update(self):
         pygame.display.flip()
-        pygame.display.update()
         self.clock.tick(self.frame)
         self.display.fill((0, 0, 0))
 
