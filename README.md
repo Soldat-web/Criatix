@@ -10,7 +10,7 @@ ADRIEN
 -map 2D
 -collisons
 -system démarrage combat
--system de sauvegarde
+-system de sauvegarde(position du jouer(x,y), inventaire, pts de vie, xp des criatix, xp du joueur).
 
 
 shoul have:
