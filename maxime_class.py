@@ -1,3 +1,6 @@
+import pygame
+
+
 class Inventaire:
     def __init__(self):
         self.objets = {"test":0}
@@ -27,15 +30,17 @@ i.retirer_objet("test")
 i.afficher_inv()
 
 
-class Criadex:
-    def __init__(self, menu):
+class Criadex():
+    def __init__(self, affichage):
         self.completion = {}
-        self.menu = menu
+        self.affichage = affichage
         
     def ajouter(self, criatix):
         self.completion[criatix] = 1
 
 c = Criadex("menu")
+
+
 class Personnage:
     def __init__(self, id, nom, prenom, speed, inventaire:Inventaire, credits, criadex:Criadex, image):
         self.id = id
@@ -73,3 +78,24 @@ for i in range(6):
 for i in range(6):
     p.retirer_equipe("Noham")
     print(p.equipe)
+
+
+class Criatix:
+    def __init__(self, id, nom, type, pv, attaque1, attaque2, defense, experience, niveau):
+        self.id = id
+        self.nom = nom
+        self.type = type
+        self.pv = pv
+        self.attaque1 = attaque1
+        self.attaque2 = attaque2
+        self.defense = defense
+        self.exp = experience
+        self.niveau = niveau
+
+
+
+a = Criatix(0, "a", "feu", 50, "a", "b", 0.1, 0, 1)
+print(a.id, a.nom, a.type, a.pv, a.attaque1, a.attaque2, a.defense, a.exp, a.niveau)
+
+b = Criatix(0, "a", "feu", 50, "a", "b", 0.1, 0, 1)
+print(a.id, a.nom, a.type, a.pv, a.attaque1, a.attaque2, a.defense, a.exp, a.niveau)
