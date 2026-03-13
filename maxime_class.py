@@ -41,8 +41,16 @@ class Criadex():
 c = Criadex("menu")
 
 
-class Personnage:
+class Personnage(pygame.sprite.Sprite):
     def __init__(self, id, nom, prenom, speed, inventaire:Inventaire, credits, criadex:Criadex, image):
+        super().__init__()
+        self.image = pygame.image.load(".\perso1.png")
+        self.rect = self.image.get_rect()
+
+        #la position max du perso en x = 769px et en y = 569px
+        self.rect.x = 384
+        self.rect.y = 284
+
         self.id = id
         self.nom = nom
         self.prenom = prenom
@@ -53,6 +61,7 @@ class Personnage:
         self.criadex:Criadex = criadex
         self.sprite = image
 
+
     def ajouter_equipe(self, criatix):
         if len(self.equipe)<6:
             return self.equipe.append(criatix)
@@ -60,6 +69,36 @@ class Personnage:
     def retirer_equipe(self, criatix):
         if criatix in self.equipe and len(self.equipe)>0:
             return self.equipe.remove(criatix)
+        
+    def update(self):
+        
+        keys = pygame.key.get_pressed()
+
+        # Déplacement horizontal
+        if keys[pygame.K_q] or keys[pygame.K_LEFT]:
+            self.rect.x -= self.speed
+        if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
+            self.rect.x += self.speed
+
+        # Déplacement vertical
+        if keys[pygame.K_z] or keys[pygame.K_UP]:
+            self.rect.y -= self.speed
+        if keys[pygame.K_s] or keys[pygame.K_DOWN]:
+            self.rect.y += self.speed
+
+        # Limites de l'écran (Contraintes)
+        if self.rect.x < 0:
+            self.rect.x = 0
+        elif self.rect.x > 769:
+            self.rect.x = 769
+
+        if self.rect.y < 0:
+            self.rect.y = 0
+        elif self.rect.y > 569:
+            self.rect.y = 569
+
+        
+    
 
 
 #test personnage
