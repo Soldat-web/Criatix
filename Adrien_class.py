@@ -2,19 +2,26 @@ import pygame
 import pytmx
 import pyscroll
 import os
-
+from maxime_class import *
 
 class Game:
     def __init__(self):
         self.running = True
         self.screen = Screen()
         self.map = Carte(self.screen)
+        self.char = Personnage(0, "Larue", "Kevino", 1, i, 0, c, "image")
 
     def run(self):
+        self.map.group.add(self.char)
         while self.running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.running = False
             self.map.group.draw(self.screen.get_display())
+            self.char.update()
             self.screen.update()
-
+            
+        
 
 class Screen:
     def __init__(self):

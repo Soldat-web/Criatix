@@ -44,7 +44,8 @@ c = Criadex("menu")
 class Personnage(pygame.sprite.Sprite):
     def __init__(self, id, nom, prenom, speed, inventaire:Inventaire, credits, criadex:Criadex, image):
         super().__init__()
-        self.image = pygame.image.load(".\perso1.png")
+        self.image = pygame.image.load("character/Characters_free/main_character_1.png")
+        
         self.rect = self.image.get_rect()
 
         #la position max du perso en x = 769px et en y = 569px
@@ -97,6 +98,8 @@ class Personnage(pygame.sprite.Sprite):
         elif self.rect.y > 569:
             self.rect.y = 569
 
+        pygame.display.flip() #voir le rendu actuel
+        self.image.convert_alpha()
         
     
 
