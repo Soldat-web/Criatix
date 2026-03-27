@@ -40,17 +40,39 @@ class Criadex():
 
 c = Criadex("menu")
 
+def load_spritesheet(filename, num_lignes, num_cols):
+    sheet = pygame.image.load(filename).convert_alpha()
+    largeur, hauteur = sheet.get_size()
+    
+    # Taille d'une frame individuelle
+    frame_l = largeur // num_cols  # Largeur totale / 3 colonnes
+    frame_h = hauteur // num_lignes # Hauteur totale / 4 lignes
+    
+    sprites = []
+    
+    # On parcourt d'abord les lignes, puis les colonnes
+    for ligne in range(num_lignes):
+        line_frames = []
+        for col in range(num_cols):
+            rect = pygame.Rect(col * frame_l, ligne * frame_h, frame_l, frame_h)
+            sprite = sheet.subsurface(rect)
+            line_frames.append(sprite)
+        sprites.append(line_frames) # On stocke par lignes pour plus de clarté
+            
+    return sprites
+
 
 class Personnage(pygame.sprite.Sprite):
-    def __init__(self, id, nom, prenom, speed, inventaire:Inventaire, credits, criadex:Criadex, image):
+    def __init__(self, id, nom, prenom, speed, inventaire:Inventaire, credits, criadex:Criadex, animations):
         super().__init__()
-        self.image = pygame.image.load("character/Characters_free/main_character_1.png")
         
-        self.rect = self.image.get_rect()
+        self.animations = animations
 
+        self.image = self.animations[0][0]
         #la position max du perso en x = 769px et en y = 569px
-        self.rect.x = 384
-        self.rect.y = 284
+        self.rect = self.image.get_rect()
+        self.rect.x = 200
+        self.rect.y = 200
 
         self.id = id
         self.nom = nom
@@ -60,7 +82,6 @@ class Personnage(pygame.sprite.Sprite):
         self.credits = credits
         self.equipe = []
         self.criadex:Criadex = criadex
-        self.sprite = image
 
 
     def ajouter_equipe(self, criatix):
@@ -90,13 +111,13 @@ class Personnage(pygame.sprite.Sprite):
         # Limites de l'écran (Contraintes)
         if self.rect.x < 0:
             self.rect.x = 0
-        elif self.rect.x > 769:
-            self.rect.x = 769
+        elif self.rect.x > 1111:
+            self.rect.x = 1111
 
         if self.rect.y < 0:
             self.rect.y = 0
-        elif self.rect.y > 569:
-            self.rect.y = 569
+        elif self.rect.y > 465:
+            self.rect.y = 465
 
         pygame.display.flip() #voir le rendu actuel
         self.image.convert_alpha()
@@ -104,7 +125,7 @@ class Personnage(pygame.sprite.Sprite):
     
 
 
-#test personnage
+"""#test personnage
 p = Personnage(0, "Larue", "Kevino", 10000000, i, 0, c, "image")
 #print(p, p.nom, p.prenom, p.speed, p.inventaire, p.credits, p.criadex, p.sprite, p.ajouter_equipe("Noham"), p.equipe, p.retirer_equipe("Alex"),p.equipe, p.retirer_equipe("Noham"),p.equipe, p.retirer_equipe("Noham"),p.equipe)
 p.ajouter_equipe("Noham")
@@ -121,7 +142,7 @@ for i in range(6):
     p.retirer_equipe("Noham")
     print(p.equipe)
 
-
+"""
 class Criatix:
     def __init__(self, id, nom, type, pv, attaque1, attaque2, defense, experience, niveau):
         self.id = id
@@ -136,8 +157,10 @@ class Criatix:
 
 
 
-a = Criatix(0, "a", "feu", 50, "a", "b", 0.1, 0, 1)
+"""a = Criatix(0, "a", "feu", 50, "a", "b", 0.1, 0, 1)
 print(a.id, a.nom, a.type, a.pv, a.attaque1, a.attaque2, a.defense, a.exp, a.niveau)
 
 b = Criatix(0, "a", "feu", 50, "a", "b", 0.1, 0, 1)
 print(a.id, a.nom, a.type, a.pv, a.attaque1, a.attaque2, a.defense, a.exp, a.niveau)
+
+"""

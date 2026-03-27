@@ -9,8 +9,9 @@ class Game:
         self.running = True
         self.screen = Screen()
         self.map = Carte(self.screen)
-        self.char = Personnage(0, "Larue", "Kevino", 1, i, 0, c, "image")
-
+        self.player_animations = load_spritesheet("character/Characters_free/main_character_1.png", 4, 3)
+        self.char = Personnage(0, "Larue", "Kevino", 1, i, 0, c, self.player_animations)
+        print(self.char.image.get_size())
     def run(self):
         self.map.group.add(self.char)
         while self.running:
