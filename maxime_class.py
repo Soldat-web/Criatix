@@ -56,6 +56,7 @@ def load_spritesheet(filename, num_lignes, num_cols):
         for col in range(num_cols):
             rect = pygame.Rect(col * frame_l, ligne * frame_h, frame_l, frame_h)
             sprite = sheet.subsurface(rect)
+            sprite = pygame.transform.scale(sprite, (32, 24))
             line_frames.append(sprite)
         sprites.append(line_frames) # On stocke par lignes pour plus de clarté
             
@@ -69,11 +70,13 @@ class Personnage(pygame.sprite.Sprite):
         self.animations = animations
 
         self.image = self.animations[0][0]
+        self.image = pygame.transform.scale(self.image, (32, 24))
         #la position max du perso en x = 769px et en y = 569px
         self.rect = self.image.get_rect()
         self.rect.x = 500
         self.rect.y = 500
-
+        self.index_anim = 0
+        self.nb_frame = 0
         self.id = id
         self.nom = nom
         self.prenom = prenom
@@ -96,18 +99,48 @@ class Personnage(pygame.sprite.Sprite):
         
         keys = pygame.key.get_pressed()
 
+        
         # Déplacement horizontal
         if keys[pygame.K_q] or keys[pygame.K_LEFT]:
             self.rect.x -= self.speed
-        if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
+            self.image = self.animations[1][self.index_anim]
+            if self.nb_frame == 20:
+                self.nb_frame = 0
+                if self.index_anim < 3:
+                    index_anim += 1
+                elif index_anim == 3:
+                    self.index_anim = 0
+        elif keys[pygame.K_d] or keys[pygame.K_RIGHT]:
             self.rect.x += self.speed
-
+            self.image = self.animations[2][self.index_anim]
+            if self.nb_frame == 20:
+                self.nb_frame = 0
+                if self.index_anim < 3:
+                    index_anim += 1
+                elif index_anim == 3:
+                    self.index_anim = 0
         # Déplacement vertical
-        if keys[pygame.K_z] or keys[pygame.K_UP]:
-            self.rect.y -= self.speed
-        if keys[pygame.K_s] or keys[pygame.K_DOWN]:
+        elif keys[pygame.K_z] or keys[pygame.K_UP]:
+            self.rect.y = self.rect.y- self.speed
+            self.image = self.animations[3][self.index_anim]
+            if self.nb_frame == 20:
+                self.nb_frame = 0
+                if self.index_anim < 3:
+                    index_anim += 1
+                elif index_anim == 3:
+                    self.index_anim = 0
+        elif keys[pygame.K_s] or keys[pygame.K_DOWN]:
             self.rect.y += self.speed
-
+            self.image = self.animations[0][self.index_anim]
+            if self.nb_frame == 20:
+                self.nb_frame = 0
+                if self.index_anim < 3:
+                    index_anim += 1
+                elif index_anim == 3:
+                    self.index_anim = 0
+        else:
+            index_anim = 0
+        
         # Limites de l'écran (Contraintes)
         if self.rect.left < 0:
             self.rect.left = 0
@@ -119,8 +152,8 @@ class Personnage(pygame.sprite.Sprite):
         elif self.rect.bottom > 768:
             self.rect.bottom = 768
 
-            pygame.display.flip() #voir le rendu actuel
-            self.image = self.image.convert_alpha()
+        pygame.display.flip() #voir le rendu actuel
+        self.image = self.image.convert_alpha()
                 
     
 
