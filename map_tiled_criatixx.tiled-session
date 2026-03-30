@@ -1,21 +1,156 @@
 {
-    "activeFile": "assets/map/map0.tmx",
+    "activeFile": "assets/map/interieur1.tmx",
     "expandedProjectPaths": [
-        ".",
-        "assets"
+        "assets",
+        "."
     ],
+    "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
+        "C:/Users/Administrateur/Desktop/interieur1_Copy.tmx": {
+            "expandedGroupLayers": [
+                4,
+                3
+            ],
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 285,
+                "y": 105
+            }
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/4g tileset_interieur.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/Houses.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/Interior without swadows.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/Interiors_free_16x16.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/Pixel Lands Interiors Demo/Pixel Lands Interiors Demo/interiors1.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/Pixel_16_interiors_v2_free/Pixel_16_interiors_v2_free/tiles and items.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/Walls and floors.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/cabinets_BA.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/cabinets_LRK.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/doorswindowsstairs_LRK.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/fixtures_BA.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/floorswalls_LRK.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/inter_0.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 226.66666666666663,
+                "y": 108
+            }
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/kitchen/kitchen_LRK.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/kitchen_LRK.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Administrateur/Desktop/mapTILED/tileset/interieur1.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
         "C:/Users/Administrateur/Desktop/mapTILED/tuile.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
-        "assets/map/map0.tmx": {
-            "scale": 0.25,
+        "C:/Users/Administrateur/Downloads/inter_0.tmx": {
+            "scale": 1.7575,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 796,
-                "y": 904
+                "x": 80.22759601706969,
+                "y": 80.2275960170697
             }
+        },
+        "C:/Users/Administrateur/Downloads/tileset/interieur1.tsx": {
+            "scaleInDock": 1
+        },
+        "assets/map/interieur1.tmx": {
+            "expandedGroupLayers": [
+                15,
+                10,
+                3,
+                4,
+                13
+            ],
+            "scale": 1,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 153,
+                "y": 104
+            }
+        },
+        "assets/map/map0.tmx": {
+            "expandedGroupLayers": [
+                13
+            ],
+            "scale": 0.33,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 840.909090909091,
+                "y": 478.78787878787875
+            }
+        },
+        "assets/map/tileset/Interiors_free/16x16/interieur.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "assets/map/tileset/tileset4g.tsx": {
+            "scaleInDock": 1
+        },
+        "assets/map/tileset/tileset_epicadv_nodoor.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "assets/map/tileset/tileset_pokemon_sdk.tsx": {
+            "scaleInDock": 1
         },
         "assets/map/tilset/tileset_epicadv_nodoor.tsx": {
             "scaleInDock": 1
@@ -38,8 +173,8 @@
             "scaleInEditor": 1
         }
     },
-    "last.externalTilesetPath": "C:/Users/Administrateur/Desktop/TERMCRIATIX/Criatix/assets/map/tileset",
-    "last.imagePath": "C:/Users/Administrateur/Desktop/TERMCRIATIX/Criatix/assets/tilset",
+    "last.externalTilesetPath": "C:/Users/Administrateur/Desktop/TERMCRIATIX/Criatix/assets/map/tileset/interieur/sol",
+    "last.imagePath": "C:/Users/Administrateur/Desktop/TERMCRIATIX/Criatix/assets/map/tileset/interieur/sol",
     "map.height": 100,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
@@ -47,17 +182,33 @@
     "map.width": 100,
     "openFiles": [
         "assets/map/map0.tmx",
-        "assets/tileset/tileset_epicadv_nodoor.tsx"
+        "assets/map/interieur1.tmx",
+        "C:/Users/Administrateur/Desktop/mapTILED/Pixel_16_interiors_v2_free/Pixel_16_interiors_v2_free/tiles and items.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/kitchen_LRK.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/cabinets_LRK.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/Pixel Lands Interiors Demo/Pixel Lands Interiors Demo/interiors1.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/doorswindowsstairs_LRK.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/floorswalls_LRK.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/cabinets_BA.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/fixtures_BA.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/kitchen/kitchen_LRK.tsx"
     ],
     "project": "map_tiled_criatixx.tiled-project",
     "recentFiles": [
-        "assets/tileset/tileset_epicadv_nodoor.tsx",
         "assets/map/map0.tmx",
-        "assets/tilset/tileset_epicadv_nodoor.tsx",
-        "assets/map0.tmx",
-        "C:/Users/Administrateur/Desktop/mapTILED/tuile.tsx"
+        "C:/Users/Administrateur/Desktop/mapTILED/kitchen/kitchen_LRK.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/fixtures_BA.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/cabinets_BA.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/floorswalls_LRK.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/doorswindowsstairs_LRK.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/Pixel Lands Interiors Demo/Pixel Lands Interiors Demo/interiors1.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/cabinets_LRK.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/kitchen_LRK.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/Pixel_16_interiors_v2_free/Pixel_16_interiors_v2_free/tiles and items.tsx",
+        "assets/map/interieur1.tmx",
+        "C:/Users/Administrateur/Desktop/mapTILED/Interiors_free_16x16.tsx"
     ],
-    "tileset.lastUsedFilter": "Fichiers de jeu de tuiles Tiled (*.tsx *.xml)",
+    "tileset.lastUsedFilter": "Tous les Fichiers (*)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 16,
