@@ -71,8 +71,8 @@ class Personnage(pygame.sprite.Sprite):
         self.image = self.animations[0][0]
         #la position max du perso en x = 769px et en y = 569px
         self.rect = self.image.get_rect()
-        self.rect.x = 200
-        self.rect.y = 200
+        self.rect.x = 500
+        self.rect.y = 500
 
         self.id = id
         self.nom = nom
@@ -109,19 +109,19 @@ class Personnage(pygame.sprite.Sprite):
             self.rect.y += self.speed
 
         # Limites de l'écran (Contraintes)
-        if self.rect.x < 0:
-            self.rect.x = 0
-        elif self.rect.x > 1111:
-            self.rect.x = 1111
+        if self.rect.left < 0:
+            self.rect.left = 0
+        elif self.rect.right > 1366:
+            self.rect.right = 1366
 
-        if self.rect.y < 0:
-            self.rect.y = 0
-        elif self.rect.y > 465:
-            self.rect.y = 465
+        if self.rect.top < 0:
+            self.rect.top = 0
+        elif self.rect.bottom > 768:
+            self.rect.bottom = 768
 
-        pygame.display.flip() #voir le rendu actuel
-        self.image.convert_alpha()
-        
+            pygame.display.flip() #voir le rendu actuel
+            self.image = self.image.convert_alpha()
+                
     
 
 

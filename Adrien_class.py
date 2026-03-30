@@ -10,7 +10,8 @@ class Game:
         self.screen = Screen()
         self.map = Carte(self.screen)
         self.player_animations = load_spritesheet("character/Characters_free/main_character_1.png", 4, 3)
-        self.char = Personnage(0, "Larue", "Kevino", 1, i, 0, c, self.player_animations)
+        print(self.player_animations[0][0].get_size())
+        self.char = Personnage(0, "Larue", "Kevino", 10, i, 0, c, self.player_animations)
         print(self.char.image.get_size())
     def run(self):
         self.map.group.add(self.char)
