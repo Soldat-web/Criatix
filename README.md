@@ -10,7 +10,6 @@ ADRIEN
 -map 2D
 -collisons
 -system démarrage combat
--system de sauvegarde(position du jouer(x,y), inventaire, pts de vie, xp des criatix, xp du joueur, progression).
 
 
 shoul have:
@@ -24,6 +23,8 @@ ADRIEN
 -boutiques, on peut rentrer dans les maisons/boutiques, hôpitaux etc…
 -combat random dans certains lieux (forets, champs, etc...)
 -inventaire (criaball, soins, objet mystérieux, ttes sortes d’objets)
+-system de sauvegarde(position du jouer(x,y), inventaire, pts de vie, xp des criatix, xp du joueur, progression).
+
 
 
 
