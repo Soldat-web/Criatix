@@ -3,23 +3,27 @@ import pygame
 
 class Inventaire:
     def __init__(self):
+        # bibliothèque d'objets avec leur quantité
         self.objets = {"test":0}
 
+    # ajout d'un objet à l'inventaire
     def ajouter_objet(self, objet):
         self.objets[objet]+=1
         return self.objets
     
+    # retrait d'un objet de l'inventaire
     def retirer_objet(self, objet):
         if self.objets[objet]>0:
             self.objets[objet]-=1
         return self.objets
     
+    # affichage de l'inventaire
     def afficher_inv(self):
         print(self.objets)
 
 
 
-#test class inv avec "test":0
+# test class inv avec "test":0
 i = Inventaire()
 i.afficher_inv()
 i.ajouter_objet("test")
@@ -32,19 +36,24 @@ i.afficher_inv()
 
 class Criadex():
     def __init__(self, affichage):
+        # bibliothèque de criatix avec leur id
         self.completion = {}
+        # affichage du criadex (menu, combat, etc)
         self.affichage = affichage
-        
+    
+    # ajout d'un criatix au criadex
     def ajouter(self, criatix):
         self.completion[criatix] = 1
 
 c = Criadex("menu")
 
+#decoupage d'une image en plusieurs pour les animations
 def load_spritesheet(filename, num_lignes, num_cols):
+    # Chargement de l'image et recupération de ses dimensions
     sheet = pygame.image.load(filename).convert_alpha()
     largeur, hauteur = sheet.get_size()
     
-    # Taille d'une frame individuelle
+    # Taille d'une sous-image
     frame_l = largeur // num_cols  # Largeur totale / 3 colonnes
     frame_h = hauteur // num_lignes # Hauteur totale / 4 lignes
     
@@ -54,7 +63,9 @@ def load_spritesheet(filename, num_lignes, num_cols):
     for ligne in range(num_lignes):
         line_frames = []
         for col in range(num_cols):
+            # On définit un rectangle pour extraire la sous-image correspondante
             rect = pygame.Rect(col * frame_l, ligne * frame_h, frame_l, frame_h)
+            # On extrait la sous-image et on la redimensionne à 32x24
             sprite = sheet.subsurface(rect)
             sprite = pygame.transform.scale(sprite, (32, 24))
             line_frames.append(sprite)
@@ -64,10 +75,10 @@ def load_spritesheet(filename, num_lignes, num_cols):
 
 
 class Personnage(pygame.sprite.Sprite):
-    def __init__(self, id, nom, prenom, speed, inventaire:Inventaire, credits, criadex:Criadex, animations):
+    def __init__(self, id, nom, prenom, speed, inventaire:Inventaire, credits, criadex:Criadex):
         super().__init__()
         
-        self.animations = animations
+        self.animations = load_spritesheet("character\Characters_free\main_character_1.png", 4, 3)
 
         self.image = self.animations[0][0]
         self.image = pygame.transform.scale(self.image, (32, 24))
@@ -75,7 +86,9 @@ class Personnage(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = 500
         self.rect.y = 500
-        self.index_anim = 0
+        self.i_anim = 0
+        self.n_dir = 0 # 0 : bas, 1 : gauche, 2 : droite, 3 : haut
+        self.a_dir = 0
         self.nb_frame = 0
         self.id = id
         self.nom = nom
@@ -98,48 +111,33 @@ class Personnage(pygame.sprite.Sprite):
     def update(self):
         
         keys = pygame.key.get_pressed()
-
         
-        # Déplacement horizontal
+        # Si aucune touche de déplacement n'est pressée, réinitialiser l'animation
+        if not keys[pygame.K_q] and not keys[pygame.K_LEFT] and not keys[pygame.K_d] and not keys[pygame.K_RIGHT] and not keys[pygame.K_z] and not keys[pygame.K_UP] and not keys[pygame.K_s] and not keys[pygame.K_DOWN]:
+            self.i_anim = 0
+        # Déterminer la direction du personnage en fonction des touches pressées
         if keys[pygame.K_q] or keys[pygame.K_LEFT]:
+            self.n_dir = 1
             self.rect.x -= self.speed
-            self.image = self.animations[1][self.index_anim]
-            if self.nb_frame == 20:
-                self.nb_frame = 0
-                if self.index_anim < 3:
-                    index_anim += 1
-                elif index_anim == 3:
-                    self.index_anim = 0
         elif keys[pygame.K_d] or keys[pygame.K_RIGHT]:
+            self.n_dir = 2
             self.rect.x += self.speed
-            self.image = self.animations[2][self.index_anim]
-            if self.nb_frame == 20:
-                self.nb_frame = 0
-                if self.index_anim < 3:
-                    index_anim += 1
-                elif index_anim == 3:
-                    self.index_anim = 0
-        # Déplacement vertical
         elif keys[pygame.K_z] or keys[pygame.K_UP]:
-            self.rect.y = self.rect.y- self.speed
-            self.image = self.animations[3][self.index_anim]
-            if self.nb_frame == 20:
-                self.nb_frame = 0
-                if self.index_anim < 3:
-                    index_anim += 1
-                elif index_anim == 3:
-                    self.index_anim = 0
+            self.n_dir = 3
+            self.rect.y -= self.speed
         elif keys[pygame.K_s] or keys[pygame.K_DOWN]:
+            self.n_dir = 0
             self.rect.y += self.speed
-            self.image = self.animations[0][self.index_anim]
-            if self.nb_frame == 20:
-                self.nb_frame = 0
-                if self.index_anim < 3:
-                    index_anim += 1
-                elif index_anim == 3:
-                    self.index_anim = 0
-        else:
-            index_anim = 0
+        # update de l'animation seulement si la direction actuelle est la même que la direction précédente
+        if self.n_dir == self.a_dir:
+            self.a_dir = self.n_dir
+            if self.i_anim < 3:
+                self.i_anim += 1
+            elif self.i_anim == 3:
+                self.i_anim = 0
+
+        self.image = self.animations[self.n_dir][self.i_anim]
+
         
         # Limites de l'écran (Contraintes)
         if self.rect.left < 0:

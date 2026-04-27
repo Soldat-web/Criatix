@@ -9,9 +9,7 @@ class Game:
         self.running = True
         self.screen = Screen()
         self.map = Carte(self.screen)
-        self.player_animations = load_spritesheet("character\Characters_free\main_character_1.png", 4, 3)
-        print(self.player_animations[0][0].get_size())
-        self.char = Personnage(0, "Larue", "Kevino", 1, i, 0, c, self.player_animations)
+        self.char = Personnage(0, "Larue", "Kevino", 1, i, 0, c)
         print(self.char.image.get_size())
         self.map.zoom_sur_personnage(self.char)
         
