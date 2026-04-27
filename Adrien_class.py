@@ -9,16 +9,23 @@ class Game:
         self.running = True
         self.screen = Screen()
         self.map = Carte(self.screen)
-        self.player_animations = load_spritesheet("character/Characters_free/main_character_1.png", 4, 3)
+        self.player_animations = load_spritesheet("character\Characters_free\main_character_1.png", 4, 3)
         print(self.player_animations[0][0].get_size())
-        self.char = Personnage(0, "Larue", "Kevino", 10, i, 0, c, self.player_animations)
+        self.char = Personnage(0, "Larue", "Kevino", 1, i, 0, c, self.player_animations)
         print(self.char.image.get_size())
+        self.map.zoom_sur_personnage(self.char)
+        
     def run(self):
         self.map.group.add(self.char)
         while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
+                
+            
+            # Centre automatiquement la caméra sur le personnage à chaque frame
+            self.map.group.center(self.char.rect.center)
+            
             self.map.group.draw(self.screen.get_display())
             self.char.update()
             self.screen.update()
@@ -51,7 +58,7 @@ class Carte:
         self.group = None
 
         self.switch_map("map0")
-
+        
     def switch_map(self, name: str):
         base_path = os.path.dirname(__file__)
         path = os.path.join(base_path, "assets", "map", f"{name}.tmx")
@@ -59,16 +66,16 @@ class Carte:
         self.tmx_data = pytmx.util_pygame.load_pygame(path)
 
         map_data = pyscroll.data.TiledMapData(self.tmx_data)
-        self.map_layer = pyscroll.orthographic.BufferedRenderer(map_data, self.screen.size())
-
-        self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=1)
-
-        map_data = pyscroll.data.TiledMapData(self.tmx_data)
         self.map_layer = pyscroll.BufferedRenderer(map_data, self.screen.size())
         self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=7)
 
+        
     def update(self):
         self.group.draw(self.screen.get_display())
+        
+    def zoom_sur_personnage(self, personnage):
+        self.group.center(personnage.rect.center)
+        self.map_layer.zoom = 4.0
 
 
 
