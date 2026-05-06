@@ -9,23 +9,18 @@ class Game:
         self.running = True
         self.screen = Screen()
         self.map = Carte(self.screen)
-        self.char = Personnage(0, "Larue", "Kevino", 1, i, 0, c)
+        self.player_animations = load_spritesheet("character/Characters_free/main_character_1.png", 4, 3)
+        print(self.player_animations[0][0].get_size())
+        self.char = Personnage(0, "Larue", "Kevino", 10, 0, c, self.player_animations)
         print(self.char.image.get_size())
-        self.map.zoom_sur_personnage(self.char)
-        
     def run(self):
         self.map.group.add(self.char)
         while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
-                
-            
-            # Centre automatiquement la caméra sur le personnage à chaque frame
-            self.map.group.center(self.char.rect.center)
-            
             self.map.group.draw(self.screen.get_display())
-            self.char.update()
+            self.char.update(self.map.collisions_rects)
             self.screen.update()
             
         
@@ -54,59 +49,30 @@ class Carte:
         self.tmx_data = None
         self.map_layer = None
         self.group = None
+        self.collisions_rects = []
 
         self.switch_map("map0")
-        
+
     def switch_map(self, name: str):
         base_path = os.path.dirname(__file__)
         path = os.path.join(base_path, "assets", "map", f"{name}.tmx")
 
         self.tmx_data = pytmx.util_pygame.load_pygame(path)
 
+        self.collisions_rects = []
+        for obj in self.tmx_data.get_layer_by_name("collisions"):
+            self.collisions_rects.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+
         map_data = pyscroll.data.TiledMapData(self.tmx_data)
         self.map_layer = pyscroll.BufferedRenderer(map_data, self.screen.size())
         self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=7)
 
-        
+
     def update(self):
         self.group.draw(self.screen.get_display())
-        
-    def zoom_sur_personnage(self, personnage):
-        self.group.center(personnage.rect.center)
-        self.map_layer.zoom = 4.0
 
 
 
-
-
-class Batiments:
-    def __init__(self):
-        self.porte = 0
-
-    def porte_ouverte(self):
-
-        if self.porte > 1:
-            self.porte = 1
-        elif self.porte < 0:
-            self.porte = 0
-
-        if self.porte_ouverte == 0:
-            print("Porte fermée")
-        else:
-            print("porte ouverte")
-
-    def porte_ouvrir(self):
-        self.porte = 1
-
-    def porte_fermer(self):
-        self.porte = 0
-
-class Maison(Batiments):
-    pass
-class Hopital(Batiments):
-    pass
-class Magasins(Batiments):
-    pass
 
 
 

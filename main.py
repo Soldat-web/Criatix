@@ -9,4 +9,3 @@ pygame.init()
 if __name__ == "__main__":
     jeu = Game()
     jeu.run()
-

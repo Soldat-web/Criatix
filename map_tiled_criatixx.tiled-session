@@ -79,7 +79,7 @@
             "scale": 1.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 226.66666666666663,
+                "x": 226.66666666666669,
                 "y": 108
             }
         },
@@ -113,32 +113,50 @@
         },
         "assets/map/interieur1.tmx": {
             "expandedGroupLayers": [
-                15,
                 10,
                 3,
-                4,
-                13
+                15,
+                13,
+                4
             ],
             "scale": 1,
-            "selectedLayer": 7,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 153,
-                "y": 104
+                "x": 255,
+                "y": 136
             }
         },
         "assets/map/map0.tmx": {
             "expandedGroupLayers": [
+                21,
                 13
             ],
-            "scale": 0.33,
-            "selectedLayer": 0,
+            "scale": 2,
+            "selectedLayer": 12,
             "viewCenter": {
-                "x": 840.909090909091,
-                "y": 478.78787878787875
+                "x": 292.5,
+                "y": 474
             }
         },
         "assets/map/tileset/Interiors_free/16x16/interieur.tsx": {
             "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "assets/map/tileset/interieur/ineterior1/interiors1.tsx": {
+            "scaleInDock": 1
+        },
+        "assets/map/tileset/interieur/ineterior1/tiles and items.tsx": {
+            "scaleInDock": 1.5
+        },
+        "assets/map/tileset/interieur/kitchen/kitchen_LRK.tsx": {
+            "scaleInDock": 1
+        },
+        "assets/map/tileset/interieur/salle_bain/fixtures_BA.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "assets/map/tileset/interieur/sol/Walls and floors.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -183,30 +201,27 @@
     "openFiles": [
         "assets/map/map0.tmx",
         "assets/map/interieur1.tmx",
-        "C:/Users/Administrateur/Desktop/mapTILED/Pixel_16_interiors_v2_free/Pixel_16_interiors_v2_free/tiles and items.tsx",
         "C:/Users/Administrateur/Desktop/mapTILED/kitchen_LRK.tsx",
-        "C:/Users/Administrateur/Desktop/mapTILED/cabinets_LRK.tsx",
-        "C:/Users/Administrateur/Desktop/mapTILED/Pixel Lands Interiors Demo/Pixel Lands Interiors Demo/interiors1.tsx",
         "C:/Users/Administrateur/Desktop/mapTILED/doorswindowsstairs_LRK.tsx",
         "C:/Users/Administrateur/Desktop/mapTILED/floorswalls_LRK.tsx",
         "C:/Users/Administrateur/Desktop/mapTILED/cabinets_BA.tsx",
-        "C:/Users/Administrateur/Desktop/mapTILED/fixtures_BA.tsx",
-        "C:/Users/Administrateur/Desktop/mapTILED/kitchen/kitchen_LRK.tsx"
+        "assets/map/tileset/interieur/salle_bain/fixtures_BA.tsx",
+        "assets/map/tileset/interieur/sol/Walls and floors.tsx"
     ],
     "project": "map_tiled_criatixx.tiled-project",
     "recentFiles": [
-        "assets/map/map0.tmx",
-        "C:/Users/Administrateur/Desktop/mapTILED/kitchen/kitchen_LRK.tsx",
-        "C:/Users/Administrateur/Desktop/mapTILED/fixtures_BA.tsx",
+        "assets/map/tileset/interieur/sol/Walls and floors.tsx",
+        "assets/map/tileset/interieur/salle_bain/fixtures_BA.tsx",
         "C:/Users/Administrateur/Desktop/mapTILED/cabinets_BA.tsx",
         "C:/Users/Administrateur/Desktop/mapTILED/floorswalls_LRK.tsx",
         "C:/Users/Administrateur/Desktop/mapTILED/doorswindowsstairs_LRK.tsx",
-        "C:/Users/Administrateur/Desktop/mapTILED/Pixel Lands Interiors Demo/Pixel Lands Interiors Demo/interiors1.tsx",
-        "C:/Users/Administrateur/Desktop/mapTILED/cabinets_LRK.tsx",
         "C:/Users/Administrateur/Desktop/mapTILED/kitchen_LRK.tsx",
-        "C:/Users/Administrateur/Desktop/mapTILED/Pixel_16_interiors_v2_free/Pixel_16_interiors_v2_free/tiles and items.tsx",
         "assets/map/interieur1.tmx",
-        "C:/Users/Administrateur/Desktop/mapTILED/Interiors_free_16x16.tsx"
+        "assets/map/map0.tmx",
+        "C:/Users/Administrateur/Desktop/mapTILED/kitchen/kitchen_LRK.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/fixtures_BA.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/Pixel Lands Interiors Demo/Pixel Lands Interiors Demo/interiors1.tsx",
+        "C:/Users/Administrateur/Desktop/mapTILED/cabinets_LRK.tsx"
     ],
     "tileset.lastUsedFilter": "Tous les Fichiers (*)",
     "tileset.lastUsedFormat": "tsx",

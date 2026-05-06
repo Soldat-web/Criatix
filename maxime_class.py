@@ -84,8 +84,8 @@ class Personnage(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (32, 24))
         #la position max du perso en x = 769px et en y = 569px
         self.rect = self.image.get_rect()
-        self.rect.x = 500
-        self.rect.y = 500
+        self.rect.x = 370
+        self.rect.y = 370
         self.i_anim = 0
         self.n_dir = 0 # 0 : bas, 1 : gauche, 2 : droite, 3 : haut
         self.a_dir = 0
@@ -108,7 +108,7 @@ class Personnage(pygame.sprite.Sprite):
         if criatix in self.equipe and len(self.equipe)>0:
             return self.equipe.remove(criatix)
         
-    def update(self):
+    def update(self, collisions_rects = []):
         
         keys = pygame.key.get_pressed()
         
@@ -119,22 +119,47 @@ class Personnage(pygame.sprite.Sprite):
         if keys[pygame.K_q] or keys[pygame.K_LEFT]:
             self.n_dir = 1
             self.rect.x -= self.speed
+            #si il y a un objet de type collisions à gauche on repousse à droite
+            for col in collisions_rects:
+                if self.rect.colliderect(col):
+                    self.rect.left = col.right
+
         elif keys[pygame.K_d] or keys[pygame.K_RIGHT]:
             self.n_dir = 2
             self.rect.x += self.speed
+            #si il y a un objet à droite on repousse à gauche
+            for col in collisions_rects:
+                if self.rect.colliderect(col):
+                    self.rect.right = col.left
         elif keys[pygame.K_z] or keys[pygame.K_UP]:
             self.n_dir = 3
             self.rect.y -= self.speed
+            #si il y a un objet en haut on repousse en bas
+            for col in collisions_rects:
+                if self.rect.colliderect(col):
+                    self.rect.top = col.bottom
+
         elif keys[pygame.K_s] or keys[pygame.K_DOWN]:
             self.n_dir = 0
             self.rect.y += self.speed
+            #si il y a un objet en bas on repousse en haut
+            for col in collisions_rects:
+                if self.rect.colliderect(col):
+                    self.rect.bottom = col.top
+
         # update de l'animation seulement si la direction actuelle est la même que la direction précédente
         if self.n_dir == self.a_dir:
             self.a_dir = self.n_dir
-            if self.i_anim < 3:
+            #il va jusqu'a 3 alors que les valeurs sont 0;1;2
+            """if self.i_anim < 3:
                 self.i_anim += 1
             elif self.i_anim == 3:
+                self.i_anim = 0"""
+            if self.i_anim < 2:
+                 self.i_anim += 1
+            elif self.i_anim == 2:
                 self.i_anim = 0
+
 
         self.image = self.animations[self.n_dir][self.i_anim]
 
@@ -150,7 +175,6 @@ class Personnage(pygame.sprite.Sprite):
         elif self.rect.bottom > 768:
             self.rect.bottom = 768
 
-        pygame.display.flip() #voir le rendu actuel
         self.image = self.image.convert_alpha()
                 
     
