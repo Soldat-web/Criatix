@@ -111,6 +111,7 @@ class Personnage(pygame.sprite.Sprite):
     def update(self, collisions_rects = []):
         
         keys = pygame.key.get_pressed()
+        moving = False
         
         # Si aucune touche de déplacement n'est pressée, réinitialiser l'animation
         if not keys[pygame.K_q] and not keys[pygame.K_LEFT] and not keys[pygame.K_d] and not keys[pygame.K_RIGHT] and not keys[pygame.K_z] and not keys[pygame.K_UP] and not keys[pygame.K_s] and not keys[pygame.K_DOWN]:
@@ -119,7 +120,8 @@ class Personnage(pygame.sprite.Sprite):
         if keys[pygame.K_q] or keys[pygame.K_LEFT]:
             self.n_dir = 1
             self.rect.x -= self.speed
-            #s' il y a un objet de type collisions à gauche on repousse à droite
+            moving = True
+            #s'il y a un objet de type collisions à gauche on repousse à droite
             for col in collisions_rects:
                 if self.rect.colliderect(col):
                     self.rect.left = col.right
@@ -127,6 +129,7 @@ class Personnage(pygame.sprite.Sprite):
         elif keys[pygame.K_d] or keys[pygame.K_RIGHT]:
             self.n_dir = 2
             self.rect.x += self.speed
+            moving = True
             #si il y a un objet à droite on repousse à gauche
             for col in collisions_rects:
                 if self.rect.colliderect(col):
@@ -134,6 +137,7 @@ class Personnage(pygame.sprite.Sprite):
         elif keys[pygame.K_z] or keys[pygame.K_UP]:
             self.n_dir = 3
             self.rect.y -= self.speed
+            moving = True
             #si il y a un objet en haut on repousse en bas
             for col in collisions_rects:
                 if self.rect.colliderect(col):
@@ -142,6 +146,7 @@ class Personnage(pygame.sprite.Sprite):
         elif keys[pygame.K_s] or keys[pygame.K_DOWN]:
             self.n_dir = 0
             self.rect.y += self.speed
+            moving = True
             #si il y a un objet en bas on repousse en haut
             for col in collisions_rects:
                 print(col)
@@ -149,17 +154,24 @@ class Personnage(pygame.sprite.Sprite):
                     self.rect.bottom = col.top
 
         # update de l'animation seulement si la direction actuelle est la même que la direction précédente
-        if self.n_dir == self.a_dir:
-            self.a_dir = self.n_dir
-            #il va jusqu'a 3 alors que les valeurs sont 0;1;2
-            """if self.i_anim < 3:
-                self.i_anim += 1
-            elif self.i_anim == 3:
-                self.i_anim = 0"""
-            if self.i_anim < 2:
-                 self.i_anim += 1
-            elif self.i_anim == 2:
-                self.i_anim = 0
+        if moving:
+            self.nb_frame += 1
+            if self.nb_frame >= 10:
+                self.nb_frame = 0
+                if self.n_dir == self.a_dir:
+                   #self.a_dir = self.n_dir
+                   if self.i_anim < 2:
+                       self.i_anim += 1
+                   else:
+                       self.i_anim = 0
+                else:
+                   self.i_anim = 0  # reset au premier frame de la nouvelle direction
+                   self.a_dir = self.n_dir
+
+                #if self.i_anim < 2:
+                     #self.i_anim += 1
+                #elif self.i_anim == 2:
+                    #self.i_anim = 0
 
 
         self.image = self.animations[self.n_dir][self.i_anim]
