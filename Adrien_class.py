@@ -11,7 +11,7 @@ class Game:
         self.map = Carte(self.screen)
         self.player_animations = load_spritesheet("character/Characters_free/main_character_1.png", 4, 3)
         print(self.player_animations[0][0].get_size())
-        self.char = Personnage(0, "Larue", "Kevino", 10, 0, c, self.player_animations)
+        self.char = Personnage(0, "Larue", "Kevino", 1, 0, c, self.player_animations)
         print(self.char.image.get_size())
     def run(self):
         self.map.group.add(self.char)
@@ -21,6 +21,7 @@ class Game:
                     self.running = False
             self.map.group.draw(self.screen.get_display())
             self.char.update(self.map.collisions_rects)
+            self.map.group.center(self.char.rect.center)
             self.screen.update()
             
         
@@ -64,7 +65,7 @@ class Carte:
             self.collisions_rects.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
 
         map_data = pyscroll.data.TiledMapData(self.tmx_data)
-        self.map_layer = pyscroll.BufferedRenderer(map_data, self.screen.size())
+        self.map_layer = pyscroll.BufferedRenderer(map_data, self.screen.size(), zoom= 5.0)
         self.group = pyscroll.PyscrollGroup(map_layer=self.map_layer, default_layer=7)
 
 

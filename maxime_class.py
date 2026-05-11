@@ -34,7 +34,7 @@ i.retirer_objet("test")
 i.afficher_inv()
 
 
-class Criadex():
+class Criadex:
     def __init__(self, affichage):
         # bibliothèque de criatix avec leur id
         self.completion = {}
@@ -65,9 +65,9 @@ def load_spritesheet(filename, num_lignes, num_cols):
         for col in range(num_cols):
             # On définit un rectangle pour extraire la sous-image correspondante
             rect = pygame.Rect(col * frame_l, ligne * frame_h, frame_l, frame_h)
-            # On extrait la sous-image et on la redimensionne à 32x24
+            # On extrait la sous-image et on la redimensionne à.32x24
             sprite = sheet.subsurface(rect)
-            sprite = pygame.transform.scale(sprite, (32, 24))
+            sprite = pygame.transform.scale(sprite, (24, 18))
             line_frames.append(sprite)
         sprites.append(line_frames) # On stocke par lignes pour plus de clarté
             
@@ -78,10 +78,10 @@ class Personnage(pygame.sprite.Sprite):
     def __init__(self, id, nom, prenom, speed, inventaire:Inventaire, credits, criadex:Criadex):
         super().__init__()
         
-        self.animations = load_spritesheet("character\Characters_free\main_character_1.png", 4, 3)
+        self.animations = load_spritesheet(r"character\Characters_free\main_character_1.png", 4, 3)
 
         self.image = self.animations[0][0]
-        self.image = pygame.transform.scale(self.image, (32, 24))
+        self.image = pygame.transform.scale(self.image, (24, 18))
         #la position max du perso en x = 769px et en y = 569px
         self.rect = self.image.get_rect()
         self.rect.x = 370
@@ -119,7 +119,7 @@ class Personnage(pygame.sprite.Sprite):
         if keys[pygame.K_q] or keys[pygame.K_LEFT]:
             self.n_dir = 1
             self.rect.x -= self.speed
-            #si il y a un objet de type collisions à gauche on repousse à droite
+            #s' il y a un objet de type collisions à gauche on repousse à droite
             for col in collisions_rects:
                 if self.rect.colliderect(col):
                     self.rect.left = col.right
@@ -144,6 +144,7 @@ class Personnage(pygame.sprite.Sprite):
             self.rect.y += self.speed
             #si il y a un objet en bas on repousse en haut
             for col in collisions_rects:
+                print(col)
                 if self.rect.colliderect(col):
                     self.rect.bottom = col.top
 
