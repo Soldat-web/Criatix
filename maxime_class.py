@@ -223,7 +223,11 @@ class Criatix:
         self.exp = experience
         self.niveau = niveau
 
-
+    def attaquer(self, attaque, criatix_adv):
+        criatix_adv.pv-=round(int(attaque[1])*(1-criatix_adv.defense))
+        if criatix_adv.pv<0:
+            criatix_adv.pv=0
+            print(f"{criatix_adv.nom} est KO !")
 
 """a = Criatix(0, "a", "feu", 50, "a", "b", 0.1, 0, 1)
 print(a.id, a.nom, a.type, a.pv, a.attaque1, a.attaque2, a.defense, a.exp, a.niveau)
