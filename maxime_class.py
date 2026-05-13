@@ -1,5 +1,5 @@
 import pygame
-
+import time
 
 class Inventaire:
     def __init__(self):
@@ -224,11 +224,24 @@ class Criatix:
         self.niveau = niveau
 
     def attaquer(self, attaque, criatix_adv):
-        criatix_adv.pv-=round(int(attaque[1])*(1-criatix_adv.defense))
-        if criatix_adv.pv<0:
-            criatix_adv.pv=0
-            print(f"{criatix_adv.nom} est KO !")
+        hierarchie_type = {"Feu": "Plante", "Eau": "Feu", "Plante": "Eau"}
+        print(f"\n{self.nom} a utilisé {attaque[0]} !")
+        time.sleep(1)
+        if hierarchie_type[self.type] == criatix_adv.type:
+            criatix_adv.pv-=round(int(attaque[1])*(criatix_adv.defense)*1.25)
+            print("\nC'est super efficace !")
+            time.sleep(1)
+        elif hierarchie_type[criatix_adv.type] == self.type:
+            criatix_adv.pv-=round(int(attaque[1])*(criatix_adv.defense)*0.75)
+            print("\nC'est pas très efficace...")
+            time.sleep(1)
+        else:
+            criatix_adv.pv-=round(int(attaque[1])*(criatix_adv.defense))
 
+        if criatix_adv.pv<=0:
+            criatix_adv.pv=0
+            print(f"\n{criatix_adv.nom} est KO !")
+            time.sleep(3)
 """a = Criatix(0, "a", "feu", 50, "a", "b", 0.1, 0, 1)
 print(a.id, a.nom, a.type, a.pv, a.attaque1, a.attaque2, a.defense, a.exp, a.niveau)
 
