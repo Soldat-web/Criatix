@@ -2,46 +2,7 @@ from maxime_class import *
 from random import randint
 import time 
 
-#criatix plante
-florix = Criatix(
-    id=0,
-    nom="Florix",
-    type="Plante",
-    pv=95,
-    attaque1=["Fleur de Vie", 15],
-    attaque2=["Tempête Végétale", 20],
-    defense=1,
-    experience=0,
-    niveau=1
-)
-
-# Criatix feu
-pyronix = Criatix(
-    id=1,
-    nom="Pyronix",
-    type="Feu",
-    pv=85,
-    attaque1=["Flamme Vive", 15],
-    attaque2=["Explosion Solaire", 20],
-    defense=1,
-    experience=0,
-    niveau=1
-)
-
-# Criatix eau
-aquaryx = Criatix(
-    id=2,
-    nom="Aquaryx",
-    type="Eau",
-    pv=100,
-    attaque1=["Jet Marin", 15],
-    attaque2=["Vague Gelée", 20],
-    defense=1,
-    experience=0,
-    niveau=1
-)
-
-def combat(criatix_joueur:Criatix, criatix_adversaire:Criatix):
+def Combat(criatix_joueur:Criatix, criatix_adversaire:Criatix):
     tour = 0
     while criatix_joueur.pv>0 and criatix_adversaire.pv>0:
         time.sleep(1)
@@ -62,7 +23,7 @@ def combat(criatix_joueur:Criatix, criatix_adversaire:Criatix):
                 criatix_adversaire.attaquer(criatix_adversaire.attaque1, criatix_joueur)
             elif attaque == 2:
                 criatix_adversaire.attaquer(criatix_adversaire.attaque2, criatix_joueur)
-pret = "non"
+"""pret = "non"
 while pret != "oui":
     criatix_joueur = input("Choisissez votre criatix : Florix (Plante), Pyronix (Feu) ou Aquaryx (Eau) ? (écrivez le nom du criatix) : ")
     if criatix_joueur == "Florix":
@@ -76,4 +37,4 @@ while pret != "oui":
     criatix_adversaire = criatix_adversaire[randint(0,1)]
     pret = input(f"Vous avez choisi {criatix_joueur.nom} ! Votre adversaire sera {criatix_adversaire.nom} ! Cela vous convient il ? (écrivez oui ou non) : ")
 combat(criatix_joueur, criatix_adversaire)
-    
+    """
